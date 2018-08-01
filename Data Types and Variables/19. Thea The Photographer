@@ -1,0 +1,48 @@
+using System;
+
+namespace _19._Thea_The_Photographer
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            long pictyresNum = long.Parse(Console.ReadLine());
+            long filterTime = long.Parse(Console.ReadLine());
+            double filterFactorPrecent = double.Parse(Console.ReadLine());
+            long uploadTime = long.Parse(Console.ReadLine());
+            double filteredPictures = (long)Math.Ceiling(pictyresNum * (filterFactorPrecent / 100));
+            long totalTimeFiltered = pictyresNum * filterTime;
+            long uploadTimeFiltered = (long)filteredPictures * uploadTime;
+            long totalTime = totalTimeFiltered + uploadTimeFiltered;
+            long days = 0;
+            long hours = 0;
+            long minutes = 0;
+            long seconds = 0;
+
+            while (true)
+            {
+                if (totalTime >= 86400)
+                {
+                    totalTime -= 86400;
+                    days++;
+                }
+                if (totalTime <= 86400 && totalTime >= 3600)
+                {
+                    totalTime -= 3600;
+                    hours++;
+                }
+                if (totalTime <= 3600 && totalTime >= 59)
+                {
+                    totalTime -= 60;
+                    minutes++;
+                }
+                if (totalTime <= 59 && totalTime >= 0)
+                {
+                     seconds = totalTime;
+                     break;
+                }                
+            }
+            Console.WriteLine($"{days}:{hours:d2}:{minutes:d2}:{totalTime:d2}");
+        }
+    }
+}
