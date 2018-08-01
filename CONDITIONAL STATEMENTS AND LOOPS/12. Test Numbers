@@ -1,0 +1,32 @@
+using System;
+
+namespace _12._Test_Numbers
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int firstNum = int.Parse(Console.ReadLine());
+            int secondNum = int.Parse(Console.ReadLine());
+            int thirdNum = int.Parse(Console.ReadLine());
+            int sum = 0;
+            int count = 0;
+            for (int n = firstNum; n >= 1; n--)
+            {
+                for (int m = 1; m <= secondNum; m++)
+                {
+                    sum += (n * m) * 3;
+                    count++;
+                    if (sum >= thirdNum)
+                    {
+                        Console.WriteLine($"{count} combinations");
+                        Console.WriteLine($"Sum: {sum} >= {thirdNum}");
+                        return;
+                    }
+                }
+            }
+            Console.WriteLine($"{count} combinations");
+            Console.WriteLine($"Sum: {sum}");
+        }
+    }
+}
