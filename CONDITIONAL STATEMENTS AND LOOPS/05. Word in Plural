@@ -1,0 +1,28 @@
+using System;
+
+namespace _05._Word_in_Plural
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string inputWord = Console.ReadLine();
+            if (inputWord.EndsWith("y") == true)
+            {
+                string leterRemuve = inputWord.Remove(inputWord.Length - 1);
+                string leterAdd = leterRemuve.Insert(leterRemuve.Length, "ies");
+                Console.WriteLine($"{leterAdd}");
+            }
+            else if (inputWord.EndsWith("o") || inputWord.EndsWith("ch") || inputWord.EndsWith("s") || inputWord.EndsWith("sh") || inputWord.EndsWith("x") || inputWord.EndsWith("z") == true)
+            {
+                string leterAdd = inputWord.Insert(inputWord.Length, "es");
+                Console.WriteLine($"{leterAdd}");
+            }
+            else
+            {
+                string leterAdd = inputWord.Insert(inputWord.Length, "s");
+                Console.WriteLine($"{leterAdd}");
+            }
+        }
+    }
+}
