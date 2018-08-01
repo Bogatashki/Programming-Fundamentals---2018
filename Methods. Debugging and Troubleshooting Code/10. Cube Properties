@@ -1,0 +1,57 @@
+using System;
+
+namespace _10._Cube_Properties
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            double side = double.Parse(Console.ReadLine());
+            string parameter = Console.ReadLine();
+            double result;
+            switch (parameter)
+            {
+                case "face":
+                    result = faceDiagonal(side);
+                    Console.WriteLine("{0:F2}", result);
+                    break;
+                case "space":
+                    result = spaseDiagonal(side);
+                    Console.WriteLine("{0:F2}", result);
+                    break;
+                case "volume":
+                    result = volumeDiagonal(side);
+                    Console.WriteLine("{0:F2}", result);
+                    break;
+                case "area":
+                    result = areaDiagonal(side);
+                    Console.WriteLine("{0:F2}", result);
+                    break;
+            }
+        }
+
+        private static double areaDiagonal(double side)
+        {
+            double diagonal = 6 * Math.Pow(side, 2);
+            return diagonal;
+        }
+
+        private static double volumeDiagonal(double side)
+        {
+            double diagonal = Math.Pow(side, 3);
+            return diagonal;
+        }
+
+        private static double spaseDiagonal(double side)
+        {
+            double diagonal = Math.Sqrt(3 * Math.Pow(side, 2));
+            return diagonal;
+        }
+
+        private static double faceDiagonal(double side)
+        {
+            double diagonal = Math.Sqrt(2* Math.Pow(side, 2));
+            return diagonal;
+        }
+    }
+}
