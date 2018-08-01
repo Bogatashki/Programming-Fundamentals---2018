@@ -1,0 +1,41 @@
+using System;
+
+namespace _13._Game_of_Numbers
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int firstNum = int.Parse(Console.ReadLine());
+            int secondNum = int.Parse(Console.ReadLine());
+            int thirdNum = int.Parse(Console.ReadLine());
+            int sum = 0;
+            int counter = 0;
+            int magicNum1 = 0;
+            int magicNum2 = 0;
+            int magicSum = 0;
+            for (int i = firstNum; i <= secondNum; i++)
+            {
+                for (int j = firstNum; j <= secondNum; j++)
+                {
+                    sum = i + j;
+                    counter++;
+                    if (sum == thirdNum)
+                    {
+                        magicSum = sum;
+                        magicNum1 = i;
+                        magicNum2 = j;
+                    }
+                }
+            }
+            if (magicSum == 0)
+            {
+                Console.WriteLine($"{counter} combinations - neither equals {thirdNum}");
+            }
+            else
+            {
+                Console.WriteLine($"Number found! {magicNum1} + {magicNum2} = {magicSum}");
+            }
+        }
+    }
+}
