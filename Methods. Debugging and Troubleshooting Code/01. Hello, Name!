@@ -1,0 +1,19 @@
+using System;
+
+namespace Methods_Debugging_and_Troubleshooting_Code
+{
+    class Program
+    {
+        static void Main(string[] args)
+
+        {
+
+            name();
+        }
+            static void name()
+            {
+                string input = Console.ReadLine();
+            Console.WriteLine($"Hello, {input}!");
+            }
+    }
+}
