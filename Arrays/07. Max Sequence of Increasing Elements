@@ -1,0 +1,36 @@
+using System;
+using System.Linq;
+
+namespace _07._Max_Sequence_of_Increasing_Elements
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int[] nubers = Console.ReadLine().Split().Select(int.Parse).ToArray();
+            string IncreasingTemp = nubers[0].ToString() + " ";
+            string Increasing = " ";
+
+            int count = 0;
+
+            for (int j = 1; j <= nubers.Length - 1; j++)
+            {
+                if (nubers[j - 1] + 1 == nubers[j])
+                {
+                    count++;
+                    IncreasingTemp += nubers[j] + " ";
+                    if (Increasing.Length < IncreasingTemp.Length)
+                    {
+                        Increasing = IncreasingTemp;
+                    }
+                }
+                else
+                {
+                    IncreasingTemp = "";
+                    IncreasingTemp += nubers[j] + " ";
+                }
+            }
+            Console.WriteLine(Increasing);
+        }
+    }
+}
