@@ -1,0 +1,25 @@
+using System;
+
+namespace _15._Fast_Prime_Checker
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int input = int.Parse(Console.ReadLine());
+            for (int currentNum = 2; currentNum <= input; currentNum++)
+            {
+                bool prime = true;
+                for (int divisor = 2; divisor <= Math.Sqrt(currentNum); divisor++)
+                {
+                    if (currentNum % divisor == 0)
+                    {
+                        prime = false;
+                        break;
+                    }
+                }
+                Console.WriteLine($"{currentNum} -> {prime}");
+            }
+        }
+    }
+}
