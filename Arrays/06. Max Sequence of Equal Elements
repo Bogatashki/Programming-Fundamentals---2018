@@ -1,0 +1,44 @@
+using System;
+using System.Linq;
+
+namespace _06._Max_Sequence_of_Equal_Elements
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int[] nubers = Console.ReadLine().Split().Select(int.Parse).ToArray();
+            string equalTemp = "";
+            string equalNum = " ";
+
+            for (int i = 0; i < nubers.Length - 1; i++)
+            {
+                if (nubers[i] == nubers[i + 1])
+                {
+                    equalTemp += nubers[i] + " ";
+                    if (equalNum.Length < equalTemp.Length)
+                    {
+                        equalNum = equalTemp;
+                    }
+                }
+                else
+                {
+                    equalTemp = "";
+                }
+            }
+            if (equalNum == " ")
+            {
+                Console.WriteLine(nubers[0]);
+            }
+            else if (nubers.Length > 1)
+            {
+            equalNum += equalNum[0];
+            Console.WriteLine(equalNum);
+            }
+            else
+            {
+                Console.WriteLine(nubers[0]);
+            }
+        }
+    }
+}
