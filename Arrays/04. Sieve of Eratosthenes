@@ -1,0 +1,31 @@
+using System;
+
+namespace _04._Sieve_of_Eratosthenes
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int input = int.Parse(Console.ReadLine());
+
+            bool[] primeValues = new bool[input + 1];
+            for (int i = 2; i < primeValues.Length; i++)
+            {
+                primeValues[i] = true;
+            }
+            
+            for (int i = 2; i < primeValues.Length; i++)
+            {
+                if (primeValues[i])
+                {
+                    Console.Write($"{i} ");
+                    for (int j = 2 * i; j < primeValues.Length; j+=i)
+                    {
+                        primeValues[j] = false;
+                    }
+                }
+            } 
+
+        }
+    }
+}
