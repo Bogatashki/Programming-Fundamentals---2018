@@ -1,0 +1,25 @@
+using System;
+
+namespace _11.__Convert_Speed_Units
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            double distanceMeters = double.Parse(Console.ReadLine());
+            double hour = double.Parse(Console.ReadLine());
+            double minutes = double.Parse(Console.ReadLine());
+            double second = double.Parse(Console.ReadLine());
+            double minutesSecond = minutes * 60;
+            double hourSecond = hour * 3600;
+            double ollTimeSec = second + minutesSecond + hourSecond;
+            double speedMeterSec = distanceMeters / ollTimeSec;
+            double speedKmHour = speedMeterSec * 3.6;
+            double distanceMiles = distanceMeters / 1609;
+            double mileHour = distanceMiles / (speedKmHour);
+            Console.WriteLine($"{speedMeterSec:g7}");
+            Console.WriteLine(Math.Round(speedKmHour, 7));
+            Console.WriteLine(Math.Round(mileHour, 7));
+        }
+    }
+}
