@@ -1,0 +1,46 @@
+using System;
+using System.Linq;
+
+namespace _05._Compare_Char_Arrays
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            char[] word1 = Console.ReadLine().Split().Select(char.Parse).ToArray();
+            char[] word2 = Console.ReadLine().Split().Select(char.Parse).ToArray();
+            int charMin = Math.Min(word1.Length, word2.Length);
+            int counter = 0;
+            for (int i = 0; i < charMin; i++)
+            {
+                if (word1[i] < word2[i])
+                {
+                    Console.WriteLine(word1);
+                    Console.WriteLine(word2);
+                    break;
+                }
+                else if (word1[i] > word2[i])
+                {
+                    Console.WriteLine(word2);
+                    Console.WriteLine(word1);
+                    break;
+                }
+                counter++;
+            }
+            if (counter == charMin)
+            {
+
+                if (word1.Length < word2.Length)
+                {
+                    Console.WriteLine(word1);
+                    Console.WriteLine(word2);
+                }
+                else
+                {
+                    Console.WriteLine(word2);
+                    Console.WriteLine(word1);
+                }
+            }
+        }
+    }
+}
