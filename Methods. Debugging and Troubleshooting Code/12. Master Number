@@ -1,0 +1,68 @@
+using System;
+
+namespace _12._Master_Number
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int input = int.Parse(Console.ReadLine());
+            //Console.WriteLine(Palindrom(input));
+            for (int i = 1; i <= input; i++)
+            {
+                bool isPalindrom = Palindrom(i);
+                bool divisibleSeven = DivisibleSeven(i);
+                bool evenDigit = EvenDigit(i);
+                bool master = isPalindrom && divisibleSeven && evenDigit;
+                if (master)
+                {
+                    Console.WriteLine(i); 
+                }
+            }
+        }
+
+        private static bool EvenDigit(int input)
+        {
+            bool hasEvenDigit = false;
+            while (input > 0)
+            {
+                int digit = input % 10;
+                if (digit % 2 == 0)
+                {
+                    hasEvenDigit = true;
+                    break;
+                }
+                input /= 10;
+            }
+
+            return hasEvenDigit;
+        }
+
+        private static bool DivisibleSeven(int input)
+        {
+            int sum = 0;
+            while (input > 0)
+            {
+                int digit = input % 10;
+                sum += digit;
+                input /= 10;
+            }
+            bool divisible = sum % 7 == 0;
+            return divisible;
+        }
+
+        private static bool Palindrom(int input)
+        {
+            string reversed = "";
+            string numAsString = input.ToString();
+            for (int i = numAsString.Length - 1; i >= 0; i--)
+            {
+                reversed += numAsString[i];
+            }
+
+            int reversedInput = int.Parse(reversed);
+            bool isPalindrom = numAsString == reversed;
+            return isPalindrom;
+        }
+    }
+}
