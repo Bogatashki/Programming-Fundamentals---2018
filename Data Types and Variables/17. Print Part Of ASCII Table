@@ -1,0 +1,19 @@
+using System;
+
+namespace _17._Print_Part_Of_ASCII_Table
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int startNum = int.Parse(Console.ReadLine());
+            int endNum = int.Parse(Console.ReadLine());
+            string printSimbol = "";
+            for (int Simbol = startNum; Simbol <= endNum; Simbol++)
+            {
+                printSimbol += Convert.ToChar(Simbol) + " ";
+            }
+            Console.WriteLine($"{printSimbol}");
+        }
+    }
+}
