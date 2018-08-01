@@ -1,0 +1,26 @@
+using System;
+
+namespace _09._Count_the_Integers
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int counter = 0;
+            while (true)
+            {
+                string input = Console.ReadLine();
+                try
+                {
+                    int number = int.Parse(input);
+                    counter++;
+                }
+                catch
+                {
+                    Console.WriteLine(counter);
+                    break;
+                }
+            }   
+        }
+    }
+}
