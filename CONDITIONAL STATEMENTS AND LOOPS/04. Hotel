@@ -1,0 +1,82 @@
+using System;
+
+namespace _04._Hotel
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string month = Console.ReadLine();
+            int nightsCount = int.Parse(Console.ReadLine());
+            double studio = 0;
+            double Double = 0;
+            double Suite = 0;
+            double discount = 0;
+            int nightFree = 0;
+            switch (month)
+            {
+                case "May":
+                    if (nightsCount > 7)
+                    {
+                        discount = 2.5;
+                    }
+                    studio = 50 - discount;
+                    Double = 65;
+                    Suite = 75;
+                    break;
+                case "October":
+                    if (nightsCount > 7)
+                    {
+                        discount = 2.5;
+                        nightFree = 1;
+                    }
+                    
+                    studio = 50 - discount;
+                    Double = 65;
+                    Suite = 75;
+                    break;
+                case "June":
+                    if (nightsCount > 14)
+                    {
+                        discount = 7.2;
+
+                    }
+                    studio = 60;
+                    Double = 72 - discount;
+                    Suite = 82;
+                    break;
+                case "September":
+                    if (nightsCount > 14)
+                    {
+                        discount = 7.2;
+                    }
+                    if (nightsCount > 7)
+                    {
+                        nightFree = 1;
+                    }
+                    studio = 60;
+                    Double = 72 - discount;
+                    Suite = 82;
+                    break;
+                case "July":
+                case "August":
+                case "December":
+                    if (nightsCount > 14)
+                    {
+                        discount = 13.35;
+
+                    }
+                    studio = 68;
+                    Double = 77;
+                    Suite = 89 - discount;
+                    break;
+            }
+            double totalStudio = studio * (nightsCount - nightFree);
+            double totalDouble = Double * nightsCount;
+            double totalSuite = Suite * nightsCount;
+            Console.WriteLine($"Studio: {totalStudio:f2} lv.");
+            Console.WriteLine($"Double: {totalDouble:f2} lv.");
+            Console.WriteLine($"Suite: {totalSuite:f2} lv.");
+        }
+    }
+}
