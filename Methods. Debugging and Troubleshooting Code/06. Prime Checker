@@ -1,0 +1,34 @@
+using System;
+
+namespace _06._Prime_Checker
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            long input = long.Parse(Console.ReadLine());
+            bool prime = isPrime(input);
+            Console.WriteLine(prime);
+
+        }
+
+        private static bool isPrime(long input)
+        {
+            bool isPrime = true;
+            if (input == 0 || input == 1)
+            {
+                isPrime = false;
+            }
+            for (int i = 2; i <= Math.Sqrt(input); i++)
+            {
+                if (input % i == 0)
+                {
+                    isPrime = false;
+                    break;
+                }
+
+            }
+            return isPrime;            
+        }
+    }
+}
