@@ -1,0 +1,33 @@
+using System;
+using System.Linq;
+
+namespace _03._Fold_and_Sum
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int[] arrInput = Console.ReadLine().Split().Select(int.Parse).ToArray();
+            int k = arrInput.Length / 4;
+            int[] arrFold = new int[k*2];
+            int[] arrRest = new int[k*2];
+            int[] result = arrFold;
+
+            for (int i = 0; i < k; i++)
+            {
+                arrFold[i] = arrInput[k - 1 - i];
+                arrFold[arrFold.Length  - 1 - i] = arrInput[arrInput.Length - k + i];
+            }
+            for (int i = 0; i < 2*k; i++)
+            {
+                arrRest[i] = arrInput[k + i];
+            }
+            for (int i = 0; i < k * 2; i++)
+            {
+                result[i] += arrRest[i];
+            }
+
+            Console.WriteLine(string.Join(" ", result));
+        }
+    }
+}
