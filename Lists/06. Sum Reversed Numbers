@@ -1,0 +1,41 @@
+using System;
+using System.Linq;
+using System.Collections.Generic;
+
+namespace _06._Sum_Reversed_Numbers
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            List<int> input = Console.ReadLine()
+                .Split()
+                .Select(int.Parse)
+                .ToList();
+            reverseAndSum(input);
+            //int sum = 0;
+        }
+
+        private static void reverseAndSum(List<int> input)
+        {
+            int sum = 0;
+            string newNumber = "";
+            
+            for (int i = 0; i < input.Count; i++)
+            {
+                string Numbers = input[i].ToString(); 
+                for (int j = 0; j < Numbers.Length; j++)
+                {
+                char firstChar = Numbers[j];
+
+                    newNumber = newNumber.Insert(0, firstChar.ToString());
+
+                }
+                sum += int.Parse(newNumber);
+                newNumber = "";
+                //return sum;
+            }
+            Console.WriteLine(sum);
+        }
+    }
+}
