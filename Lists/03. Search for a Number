@@ -1,0 +1,48 @@
+using System;
+using System.Linq;
+using System.Collections.Generic;
+
+namespace _03._Search_for_a_Number
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            List<int> inputNum = Console.ReadLine()
+                .Split()
+                .Select(int.Parse)
+                .ToList();
+
+            List<int> inputComand = Console.ReadLine()
+                .Split()
+                .Select(int.Parse)
+                .ToList();
+            int takeNum = inputComand[0];
+            List<int> takeList = new List<int>();
+            for (int i = 0; i < takeNum; i++)
+            {
+                takeList.Add(inputNum[i]);
+            }
+            int deleteNum = inputComand[1];
+            for (int i = 0; i < deleteNum; i++)
+            {
+                takeList.RemoveAt(0);
+            }
+            int numInList = inputComand[2];
+            int count = 0;
+            foreach (var item in takeList)
+            {
+                if (numInList == item)
+                {
+                    Console.WriteLine($"YES!");
+                    count++;
+                    break;
+                }                
+            }
+            if (count == 0)
+            {
+                Console.WriteLine($"NO!");
+            }
+        }
+    }
+}
