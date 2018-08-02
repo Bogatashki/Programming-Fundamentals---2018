@@ -1,0 +1,72 @@
+using System;
+using System.Linq;
+using System.Collections.Generic;
+
+
+namespace _05._Array_Manipulator
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            List<int> input = Console.ReadLine()
+                .Split()
+                .Select(int.Parse)
+                .ToList();
+            while (true)
+            {
+                List<string> inputComand = Console.ReadLine()
+                    .Split()
+                    .ToList();
+
+                if (inputComand[0] == "print")
+                {
+                    Console.WriteLine("[{0}]", string.Join(", ", input));
+                    break;
+                }
+                switch (inputComand[0])
+                {
+                    case "add":
+                int index = int.Parse(inputComand[1]);
+                        int element = int.Parse(inputComand[2]);
+                        input.Insert(index, element);
+                        break;
+                    case "addMany":
+                        index = int.Parse(inputComand[1]);
+                        List<int> numAdd = new List<int>();
+                        for (int i = 2; i < inputComand.Count; i++)
+                        {
+                            numAdd.Add(int.Parse(inputComand[i]));
+                        }
+                        input.InsertRange(index, numAdd);
+                        break;
+                    case "contains":
+                        int element1 = int.Parse(inputComand[1]);
+                        int printElement = input.IndexOf(element1);
+                        Console.WriteLine(printElement);
+                        break;
+                    case "remove":
+                        index = int.Parse(inputComand[1]);
+                        input.RemoveAt(index);
+                        break;
+                    case "shift":
+                        index = int.Parse(inputComand[1]);
+                        for (int i = 0; i < index; i++)
+                        {
+                            int first = input[0];
+                            input.RemoveAt(0);
+                            input.Add(first);
+                        }
+                        break;
+                    case "sumPairs":
+                        for (int i = 0; i < input.Count - 1; i++)
+                        {
+                            input[i] += input[i + 1];
+                            input.RemoveAt(i + 1);
+                        }
+                        break;
+                }
+            }
+        }
+    }
+}
