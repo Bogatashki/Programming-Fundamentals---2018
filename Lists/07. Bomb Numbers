@@ -1,0 +1,50 @@
+using System;
+using System.Linq;
+using System.Collections.Generic;
+
+namespace _07._Bomb_Numbers
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            List<int> input = Console.ReadLine()
+                .Split()
+                .Select(int.Parse)
+                .ToList();
+            int[] boomNumber = Console.ReadLine()
+                .Split()
+                .Select(int.Parse)
+                .ToArray();
+
+            int boomb = boomNumber[0];
+            int boombRange = boomNumber[1];
+            int boombIndex = input.IndexOf(boomb);
+            while (boomb != -1)
+            {
+                int leftrange = boombIndex - boombRange;
+                int rightRange = boombIndex + boombRange;
+                if (leftrange < 0)
+                {
+                    leftrange = 0;
+                }
+                if (rightRange > input.Count - 1)
+                {
+                    rightRange = input.Count - 1;
+                }
+                int delNumBoomb = rightRange - leftrange + 1;
+
+                input.RemoveRange(leftrange, delNumBoomb);
+
+                boomb = input.IndexOf(boomb);
+
+            }
+            int sum = 0;
+            foreach (var item in input)
+            {
+                sum += item;
+            }
+            Console.WriteLine(sum);
+        }
+    }
+}
