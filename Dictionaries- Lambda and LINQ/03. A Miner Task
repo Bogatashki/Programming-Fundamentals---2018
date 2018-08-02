@@ -1,0 +1,36 @@
+using System;
+using System.Linq;
+using System.Collections.Generic;
+
+namespace _03._A_Miner_Task
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Dictionary<string, int> mineTsak = new Dictionary<string, int>();
+            
+            while (true)
+            {
+                string input = Console.ReadLine();
+                if (input == "stop")
+                {
+                    break;
+                }
+                int quantity = int.Parse(Console.ReadLine());
+                if (mineTsak.ContainsKey(input)==true)
+                {
+                    mineTsak[input] += quantity;
+                }
+                else
+                {
+                    mineTsak.Add(input, quantity);
+                }                    
+            }
+            foreach (var item in mineTsak)
+            {
+            Console.WriteLine($"{item.Key} -> {item.Value}");
+            }
+        }
+    }
+}
