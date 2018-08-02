@@ -1,0 +1,60 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace _02._Change_List
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            List<int> input = Console.ReadLine()
+                .Split()
+                .Select(int.Parse)
+                .ToList();
+
+            while (true)
+            {
+                List<string> inputEvent = Console.ReadLine()
+                .ToString()
+                .Split()
+                .ToList();
+
+
+                if (inputEvent[0] == "Delete")
+                {
+                    int numRemove = int.Parse(inputEvent[1]);
+                    input.RemoveAll(n => n == numRemove);
+                }
+                if (inputEvent[0] == "Insert")
+                {
+                    int numInsert = int.Parse(inputEvent[1]);
+                    int numPosition = int.Parse(inputEvent[2]);
+                    input.Insert(numPosition, numInsert);
+                }
+                if (inputEvent[0] == "Odd")
+                {
+                    foreach (var num in input)
+                    {
+                        if (num % 2 != 0)
+                        {
+                            Console.Write($"{num} ");
+                        }
+                    }
+                    break;
+                }
+                else if (inputEvent[0] == "Even")
+                {
+                    foreach (var num in input)
+                    {
+                        if (num % 2 == 0)
+                        {
+                            Console.Write($"{num} ");
+                        }
+                    }
+                    break;
+                }
+            }
+        }
+    }
+}
