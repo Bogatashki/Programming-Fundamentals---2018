@@ -1,0 +1,31 @@
+using System;
+using System.Linq;
+
+namespace _10._Pairs_by_Difference
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int[] nums = Console.ReadLine()
+                .Split()
+                .Select(int.Parse)
+                .ToArray();
+            int differenceNum = int.Parse(Console.ReadLine());            
+            int counter = 0; 
+
+            for (int i = 0; i < nums.Length - 1; i++)
+            {
+                for (int j = i + 1; j < nums.Length; j++)
+                {
+                    int difference = Math.Max(nums[i], nums[j]) - Math.Min(nums[i], nums[j]);
+                    if (difference == differenceNum)
+                    {                       
+                        counter++;
+                    }
+                }
+            }
+            Console.WriteLine(counter);
+        }
+    }
+}
