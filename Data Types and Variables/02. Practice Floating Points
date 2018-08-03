@@ -1,0 +1,18 @@
+using System;
+
+namespace ConsoleApp1
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            decimal inpit1 = decimal.Parse(Console.ReadLine());
+            double inpit2 = double.Parse(Console.ReadLine());
+            decimal inpit3 = decimal.Parse(Console.ReadLine());
+       
+            Console.WriteLine(inpit1);
+            Console.WriteLine(inpit2);
+            Console.WriteLine(inpit3);
+        }
+    }
+}
