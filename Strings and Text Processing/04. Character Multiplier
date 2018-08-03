@@ -1,0 +1,41 @@
+using System;
+
+namespace _04._Character_Multiplier
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string[] input = Console.ReadLine()
+                .Split();
+            string str1 = input[0];
+            string str2 = input[1];
+            int sum = 0;
+            int bigStr = Math.Max(str1.Length, str2.Length);
+            int smollStr = Math.Min(str1.Length, str2.Length);
+            string rest;
+
+            if (str1.Length > str2.Length)
+            {
+                rest = str1;
+            }
+            else
+            {
+                rest = str2;
+            }
+            for (int i = 0; i < bigStr; i++)
+            {
+                if (i < smollStr)
+                {
+                    sum += str1[i] * str2[i];
+
+                }
+                else
+                {
+                    sum += rest[i];
+                }
+            }
+            Console.WriteLine(sum);
+        }
+    }
+}
