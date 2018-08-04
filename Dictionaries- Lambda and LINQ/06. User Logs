@@ -1,0 +1,55 @@
+using System;
+using System.Collections.Generic;
+
+namespace _06._User_Logs
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            SortedDictionary<string, Dictionary<string, List<string>>> userAndIP = new SortedDictionary<string, Dictionary<string, List<string>>>();
+            
+            while (true)
+            {
+                string input = Console.ReadLine();
+
+                if (input == "end")
+                    break;
+
+                string[] inputStr = input.Split();
+                string[] stringIP = inputStr[0].Split("=");
+                string IP = stringIP[1];
+                string[] stringUser = inputStr[2].Split("=");
+                string user = stringUser[1];
+
+                if (userAndIP.ContainsKey(user) == false)
+                {                    
+                    userAndIP.Add(user, new Dictionary<string, List<string>>());
+                }
+                if (userAndIP[user].ContainsKey(IP) == false)
+                {
+                    userAndIP[user].Add(IP, new List<string>());
+                }
+                userAndIP[user][IP].Add("1");                
+            }
+            int counter = 1;
+            foreach (var username in userAndIP.Keys)
+            {
+                Console.WriteLine($"{username}: ");
+                foreach (var IpAdress in userAndIP[username])
+                {                    
+                    Console.Write($"{IpAdress.Key} => {IpAdress.Value.Count}");
+                    if (userAndIP[username].Values.Count > counter)
+                    {
+                        Console.Write(", ");
+                        counter++;
+                    }
+                    else
+                    {
+                        Console.WriteLine(".");
+                    }
+                }
+            }
+        }
+    }
+}
